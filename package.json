@@ -1,0 +1,16 @@
+{
+  "name": "mean-task1",
+  "version": "1.0.0",
+  "description": "Hardened CRUD web application with modern inventory management",
+  "main": "server.js",
+  "author": "Abhinav Kumar",
+  "license": "ISC",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node test-suite.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

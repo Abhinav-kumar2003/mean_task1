@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Items Manager — Inventory CRUD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-layout">
+    <div class="container">
+      <!-- App Header -->
+      <header class="app-header">
+        <div class="header-brand">
+          <div class="brand-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+              <line x1="12" y1="22.08" x2="12" y2="12"></line>
+            </svg>
+          </div>
+          <div>
+            <h1 class="app-title">Items Manager</h1>
+            <p class="app-subtitle">MERN CRUD Application & Inventory Catalog</p>
+          </div>
+        </div>
+        
+        <div class="header-stats">
+          <div class="stat-pill">
+            <span class="stat-label">Items</span>
+            <span id="statCount" class="stat-value">0</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-label">Total Value</span>
+            <span id="statTotal" class="stat-value">$0.00</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Status banner -->
+      <div id="status" class="status hidden" role="alert" aria-live="polite"></div>
+
+      <!-- Form Card -->
+      <section class="card form-card">
+        <div class="card-header">
+          <div class="card-title-group">
+            <h2 id="formHeading" class="card-title">Add New Item</h2>
+            <span id="formBadge" class="mode-badge">Create Mode</span>
+          </div>
+        </div>
+
+        <form id="itemForm" class="form-box" autocomplete="off" novalidate>
+          <input type="hidden" id="itemId" />
+
+          <div class="form-fields">
+            <div class="form-group">
+              <label for="name">Item Name</label>
+              <div class="input-wrapper">
+                <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                  <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                </svg>
+                <input type="text" id="name" maxlength="50" placeholder="e.g. Minimalist Notebook" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="price">Price ($)</label>
+              <div class="input-wrapper">
+                <span class="currency-tag">$</span>
+                <input type="number" id="price" min="0" max="10000000" step="0.01" placeholder="0.00" required />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" id="cancelBtn" class="btn btn-gray hidden">Cancel</button>
+            <button type="submit" id="submitBtn" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Table Card -->
+      <section class="card table-card">
+        <div class="card-header table-header-flex">
+          <div class="card-title-group">
+            <h2 class="card-title">Inventory Records</h2>
+            <span id="itemCountBadge" class="count-badge">0 items</span>
+          </div>
+
+          <div class="search-box">
+            <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="search" id="searchInput" placeholder="Filter items..." aria-label="Filter items" />
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th class="col-id">ID</th>
+                <th class="col-name">Name</th>
+                <th class="col-price">Price</th>
+                <th class="col-action">Action</th>
+              </tr>
+            </thead>
+            <tbody id="itemTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
